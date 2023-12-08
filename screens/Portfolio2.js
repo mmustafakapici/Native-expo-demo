@@ -1,11 +1,24 @@
 import * as React from "react";
+import { useEffect, useState } from 'react';
 import { Image } from "expo-image";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable , FlatList} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Padding, FontSize, Color, FontFamily, Border } from "../GlobalStyles";
 
+import { fetchCoins } from "../api/CoinGecko";
+
 const Portfolio2 = () => {
   const navigation = useNavigation();
+  const [coins, setCoins] = useState([]);
+
+  useEffect(() => {
+    const getCoins = async () => {
+      const data = await fetchCoins();
+      setCoins(data);
+    };
+
+    getCoins();
+  }, []);
 
   return (
     <View style={[styles.portfolio, styles.frameFlexBox]}>
@@ -24,7 +37,7 @@ const Portfolio2 = () => {
           source={require("../assets/-icon-search.png")}
         />
       </View>
-     
+
       <View style={[styles.frame, styles.frameSpaceBlock]}>
         <View style={styles.list}>
           <View style={[styles.colNames, styles.listFlexBox]}>
@@ -38,6 +51,10 @@ const Portfolio2 = () => {
               <Text style={[styles.marketcap, styles.coinTypo]}>MARKETCAP</Text>
             </View>
           </View>
+
+          <FlatList
+          data={coins}
+          renderItem={({item}) => (
           <View style={styles.listItems}>
             <View style={styles.listItem}>
               <View style={[styles.listItem1, styles.listFlexBox]}>
@@ -47,12 +64,12 @@ const Portfolio2 = () => {
                     <Image
                       style={styles.cryptologoIcon}
                       contentFit="cover"
-                      source={require("../assets/cryptologo.png")}
+                      source={{ uri: item.image }}
                     />
-                    <Text style={styles.cryptosymbol}>BTC</Text>
+                    <Text style={styles.cryptosymbol}>{item.name} ({item.symbol.toUpperCase()})</Text>
                   </View>
                 </View>
-                <Text style={styles.number1Typo}>$34,695.25</Text>
+                <Text style={styles.number1Typo}>${item.current_price}</Text>
                 <View style={styles.hParent}>
                   <View style={styles.pricechangeframe}>
                     <Image
@@ -61,19 +78,24 @@ const Portfolio2 = () => {
                       source={require("../assets/arrow.png")}
                     />
                     <Text style={[styles.cryptochange, styles.marketcap1Typo]}>
-                      2.1%
+                    {item.price_change_percentage_24h.toFixed(2)}%
                     </Text>
                   </View>
                   <Text style={[styles.marketcap1, styles.marketcap1Typo]}>
-                    $676,400,980,286
+                    ${item.market_cap}
                   </Text>
                 </View>
               </View>
               <View style={[styles.listItemChild, styles.tabbarBorder]} />
             </View>
           </View>
+          )}
+          keyExtractor={(item) => item.id}
+          />
+
+
+          
         </View>
-       
       </View>
     </View>
   );
