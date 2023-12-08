@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect, useState } from 'react';
 import { Image } from "expo-image";
-import { StyleSheet, Text, View, Pressable , FlatList,SectionList} from "react-native";
+import { StyleSheet, Text, View, Pressable , FlatList,SectionList , SafeAreaView} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Padding, FontSize, Color, FontFamily, Border } from "../GlobalStyles";
 
@@ -21,7 +21,7 @@ const Portfolio2 = () => {
   }, []);
 
   return (
-    <View style={[styles.portfolio, styles.frameFlexBox]}>
+    <SafeAreaView style={[styles.portfolio, styles.frameFlexBox]}>
       <View style={[styles.headerTopBar, styles.listFlexBox]}>
         <Image
           style={styles.groupIcon}
@@ -66,7 +66,7 @@ const Portfolio2 = () => {
                       contentFit="cover"
                       source={{ uri: item.image }}
                     />
-                    <Text style={styles.cryptosymbol}> {item.name}({item.symbol.toUpperCase()})</Text>
+                    <Text style={styles.cryptosymbol}> {item.name}</Text>
                   </View>
                 </View>
                 <Text style={styles.number1Typo}>${item.current_price}</Text>
@@ -97,7 +97,7 @@ const Portfolio2 = () => {
           
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
