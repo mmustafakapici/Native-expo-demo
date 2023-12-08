@@ -25,60 +25,7 @@ const User3 = () => {
         </View>
       </View>
       <View style={[styles.userChild, styles.tabbarSpaceBlock]} />
-      <View style={[styles.tabbar, styles.tabbarSpaceBlock]}>
-        <Pressable
-          style={styles.market}
-          onPress={() =>
-            navigation.navigate("BottomTabsRoot", { screen: "Piyasalar" })
-          }
-        >
-          <Image
-            style={styles.vectorIcon}
-            contentFit="cover"
-            source={require("../assets/vector3.png")}
-          />
-          <Text style={[styles.market1, styles.user3Typo]}>Market</Text>
-        </Pressable>
-        <Pressable
-          style={styles.market}
-          onPress={() =>
-            navigation.navigate("BottomTabsRoot", { screen: "Portfolio2" })
-          }
-        >
-          <Image
-            style={styles.vectorIcon1}
-            contentFit="cover"
-            source={require("../assets/vector2.png")}
-          />
-          <Text style={[styles.market1, styles.user3Typo]}>Portfolio</Text>
-        </Pressable>
-        <Pressable
-          style={styles.market}
-          onPress={() =>
-            navigation.navigate("BottomTabsRoot", { screen: "Charts" })
-          }
-        >
-          <Image
-            style={styles.vectorIcon1}
-            contentFit="cover"
-            source={require("../assets/-icon-analytics2.png")}
-          />
-          <Text style={[styles.market1, styles.user3Typo]}>Charts</Text>
-        </Pressable>
-        <Pressable
-          style={styles.market}
-          onPress={() =>
-            navigation.navigate("BottomTabsRoot", { screen: "News2" })
-          }
-        >
-          <Image
-            style={styles.groupIcon1}
-            contentFit="cover"
-            source={require("../assets/group1.png")}
-          />
-          <Text style={[styles.market1, styles.user3Typo]}>News</Text>
-        </Pressable>
-      </View>
+    
     </View>
   );
 };

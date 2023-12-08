@@ -24,47 +24,7 @@ const News2 = () => {
           />
         </View>
       </View>
-      <View style={[styles.tabbar, styles.tabbarFlexBox]}>
-        <Pressable
-          style={styles.market}
-          onPress={() =>
-            navigation.navigate("BottomTabsRoot", { screen: "Piyasalar" })
-          }
-        >
-          <Image
-            style={styles.vectorIcon}
-            contentFit="cover"
-            source={require("../assets/vector3.png")}
-          />
-          <Text style={[styles.market1, styles.news3Typo]}>Market</Text>
-        </Pressable>
-        <Pressable
-          style={styles.market}
-          onPress={() =>
-            navigation.navigate("BottomTabsRoot", { screen: "Portfolio2" })
-          }
-        >
-          <Image
-            style={styles.vectorIcon1}
-            contentFit="cover"
-            source={require("../assets/vector2.png")}
-          />
-          <Text style={[styles.market1, styles.news3Typo]}>Portfolio</Text>
-        </Pressable>
-        <Pressable
-          style={styles.market}
-          onPress={() =>
-            navigation.navigate("BottomTabsRoot", { screen: "Charts" })
-          }
-        >
-          <Image
-            style={styles.vectorIcon1}
-            contentFit="cover"
-            source={require("../assets/-icon-analytics2.png")}
-          />
-          <Text style={[styles.market1, styles.news3Typo]}>Charts</Text>
-        </Pressable>
-      </View>
+      
     </View>
   );
 };

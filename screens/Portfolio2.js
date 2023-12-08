@@ -24,13 +24,7 @@ const Portfolio2 = () => {
           source={require("../assets/-icon-search.png")}
         />
       </View>
-      <View style={[styles.listCategories, styles.frameSpaceBlock]}>
-        <Text style={styles.cryptocurrency}>Cryptocurrency</Text>
-        <Text style={styles.cryptocurrency}>NFT</Text>
-        <Text style={styles.cryptocurrency}>Categories</Text>
-        <Text style={styles.cryptocurrency}>Exchanges</Text>
-        <Text style={styles.cryptocurrency}>Derivatives</Text>
-      </View>
+     
       <View style={[styles.frame, styles.frameSpaceBlock]}>
         <View style={styles.list}>
           <View style={[styles.colNames, styles.listFlexBox]}>
@@ -79,47 +73,7 @@ const Portfolio2 = () => {
             </View>
           </View>
         </View>
-        <View style={[styles.tabbar, styles.tabbarBorder]}>
-          <Pressable
-            style={styles.market}
-            onPress={() =>
-              navigation.navigate("BottomTabsRoot", { screen: "Charts" })
-            }
-          >
-            <Image
-              style={styles.vectorIcon1}
-              contentFit="cover"
-              source={require("../assets/-icon-analytics2.png")}
-            />
-            <Text style={[styles.market1, styles.market1Typo]}>Charts</Text>
-          </Pressable>
-          <Pressable
-            style={styles.market}
-            onPress={() =>
-              navigation.navigate("BottomTabsRoot", { screen: "News2" })
-            }
-          >
-            <Image
-              style={styles.groupIcon1}
-              contentFit="cover"
-              source={require("../assets/group1.png")}
-            />
-            <Text style={[styles.market1, styles.market1Typo]}>News</Text>
-          </Pressable>
-          <Pressable
-            style={styles.market}
-            onPress={() =>
-              navigation.navigate("BottomTabsRoot", { screen: "User3" })
-            }
-          >
-            <Image
-              style={styles.groupIcon2}
-              contentFit="cover"
-              source={require("../assets/group3.png")}
-            />
-            <Text style={[styles.market1, styles.market1Typo]}>User</Text>
-          </Pressable>
-        </View>
+       
       </View>
     </View>
   );

@@ -23,47 +23,7 @@ const Charts = () => {
         />
       </View>
       <View style={[styles.chartsChild, styles.tabbarSpaceBlock]} />
-      <View style={[styles.tabbar, styles.tabbarSpaceBlock]}>
-        <Pressable
-          style={styles.market}
-          onPress={() =>
-            navigation.navigate("BottomTabsRoot", { screen: "Piyasalar" })
-          }
-        >
-          <Image
-            style={styles.vectorIcon}
-            contentFit="cover"
-            source={require("../assets/vector3.png")}
-          />
-          <Text style={[styles.market1, styles.market1Typo]}>Market</Text>
-        </Pressable>
-        <Pressable
-          style={styles.market}
-          onPress={() =>
-            navigation.navigate("BottomTabsRoot", { screen: "Portfolio2" })
-          }
-        >
-          <Image
-            style={styles.vectorIcon1}
-            contentFit="cover"
-            source={require("../assets/vector2.png")}
-          />
-          <Text style={[styles.market1, styles.market1Typo]}>Portfolio</Text>
-        </Pressable>
-        <Pressable
-          style={styles.market}
-          onPress={() =>
-            navigation.navigate("BottomTabsRoot", { screen: "User3" })
-          }
-        >
-          <Image
-            style={styles.groupIcon2}
-            contentFit="cover"
-            source={require("../assets/group3.png")}
-          />
-          <Text style={[styles.market1, styles.market1Typo]}>User</Text>
-        </Pressable>
-      </View>
+     
     </View>
   );
 };
