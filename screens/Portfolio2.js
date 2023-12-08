@@ -52,21 +52,21 @@ const Portfolio2 = () => {
             </View>
           </View>
 
+          <View style={styles.listItems}>
           <FlatList
           data={coins}
           renderItem={({item}) => (
-          <View style={styles.listItems}>
             <View style={styles.listItem}>
               <View style={[styles.listItem1, styles.listFlexBox]}>
                 <View style={styles.numberParent}>
-                  <Text style={[styles.number1, styles.number1Typo]}>1</Text>
+                  <Text style={[styles.number1, styles.number1Typo]}>#</Text>
                   <View style={[styles.symbolframe, styles.portfolio1FlexBox]}>
                     <Image
                       style={styles.cryptologoIcon}
                       contentFit="cover"
                       source={{ uri: item.image }}
                     />
-                    <Text style={styles.cryptosymbol}>{item.name} ({item.symbol.toUpperCase()})</Text>
+                    <Text style={styles.cryptosymbol}> {item.name}({item.symbol.toUpperCase()})</Text>
                   </View>
                 </View>
                 <Text style={styles.number1Typo}>${item.current_price}</Text>
@@ -88,10 +88,10 @@ const Portfolio2 = () => {
               </View>
               <View style={[styles.listItemChild, styles.tabbarBorder]} />
             </View>
-          </View>
           )}
           keyExtractor={(item) => item.id}
           />
+          </View>
 
 
           
@@ -213,8 +213,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cryptologoIcon: {
-    width: 15,
-    height: 15,
+    width: 25,
+    height: 25,
   },
   cryptosymbol: {
     marginLeft: 5,
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   symbolframe: {
-    width: 18,
+    width: 60,
     marginLeft: 15,
     flexDirection: "row",
   },
