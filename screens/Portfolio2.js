@@ -124,11 +124,11 @@ const styles = StyleSheet.create({
     color: Color.colorDarkgray,
     textAlign: "center",
     fontFamily: FontFamily.exo2Medium,
-    fontWeight: "500",
+    fontWeight: "700",
   },
   number1Typo: {
     textAlign: "left",
-    fontSize: FontSize.size_3xs,
+    fontSize: FontSize.size_10xs,
     color: Color.colorWhitesmoke,
     fontFamily: FontFamily.exo2Medium,
     fontWeight: "500",
