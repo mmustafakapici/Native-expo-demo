@@ -213,8 +213,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cryptologoIcon: {
-    width: 25,
-    height: 25,
+    width: 35,
+    height: 35,
+    marginTop: 5,
   },
   cryptosymbol: {
     marginLeft: 5,
