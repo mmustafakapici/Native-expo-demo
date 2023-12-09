@@ -5,7 +5,8 @@ import { StyleSheet, Text, View, Pressable , FlatList,SectionList , SafeAreaView
 import { useNavigation } from "@react-navigation/native";
 import { Padding, FontSize, Color, FontFamily, Border } from "../GlobalStyles";
 
-import { fetchCoins } from "../api/CoinGecko";
+//import { fetchCoins } from "../api/CoinGecko";
+import { fetchCoins } from "../api/CoinGecko_local";
 
 const Portfolio2 = () => {
   const navigation = useNavigation();
@@ -18,6 +19,15 @@ const Portfolio2 = () => {
     };
 
     getCoins();
+
+    //60sec refresh
+    const interval = setInterval(() => {
+      getCoins();
+    }, 60000);
+
+
+    return () => clearInterval(interval);
+
   }, []);
 
   return (

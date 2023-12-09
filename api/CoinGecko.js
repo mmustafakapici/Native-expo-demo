@@ -14,5 +14,8 @@ export const fetchCoins = async () => {
     return response.data;
   } catch (error) {
     console.error(error);
+
   }
 };
+
+
