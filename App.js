@@ -2,45 +2,52 @@ const Stack = createNativeStackNavigator();
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import Al from "./screens/Al";
-import User1 from "./components/User";
-import News from "./components/News";
-import News1 from "./components/News1";
-import Chart from "./components/Chart";
-import Chart1 from "./components/Chart1";
-import Portfolio from "./components/Portfolio";
-import Market from "./components/Market";
-import User2 from "./components/User1";
-import Portfolio1 from "./components/Portfolio1";
-import Market1 from "./components/Market1";
-import ListItem from "./components/ListItem";
-import Piyasalar from "./screens/Piyasalar";
-import User3 from "./screens/User3";
-import News2 from "./screens/News2";
-import Portfolio2 from "./screens/Portfolio2";
-import Charts from "./screens/Charts";
-import Palette from "./components/Palette";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+
+
+
+
+import NormalNewsButton from "./components/buttons/NormalNewsButton";
+import NormalChartButton from "./components/buttons/NormalChartButton";
+import NormalPortfolioButton from "./components/buttons/NormalPortfolioButton";
+import NormalMarketButton from "./components/buttons/NormalMarketButton";
+import NormalUserButton from "./components/buttons/NormalUserButton";
+
+
+
+import ActiveUserButton from "./components/buttons/ActiveUserButton";
+import ActiveNewsButton from "./components/buttons/ActiveNewsButton";
+import ActiveChartButton from "./components/buttons/ActiveChartButton";
+import ActivePortfolioButton from "./components/buttons/ActivePortfolioButton";
+import ActiveMarketButton from "./components/buttons/ActiveMarketButton";
+
+
+import ScreenSplash from "./screens/00-ScreenSplash";
+import ScreenMarkets from "./screens/01-ScreenMarkets";
+import ScreenPortfolio from "./screens/02-ScreenPortfolio";
+import ScreenCharts from "./screens/03-ScreenCharts";
+import ScreenNews from "./screens/04-ScreenNews";
+import ScreenUser from "./screens/05-ScreenUser";
 
 const Tab = createBottomTabNavigator();
 function BottomTabsRoot({ navigation }) {
   const [bottomTabItemsNormal] = React.useState([
-    <Market1 />,
-    <Portfolio1 />,
-    <Chart />,
-    <News />,
-    <User2 />,
+    <NormalMarketButton />,
+    <NormalPortfolioButton />,
+    <NormalChartButton />,
+    <NormalNewsButton />,
+    <NormalUserButton />,
   ]);
   const [bottomTabItemsActive] = React.useState([
-    <Market />,
-    <Portfolio />,
-    <Chart1 />,
-    <News1 />,
-    <User1 />,
+    <ActiveMarketButton />,
+    <ActivePortfolioButton />,
+    <ActiveChartButton />,
+    <ActiveNewsButton />,
+    <ActiveUserButton />,
   ]);
   return (
     <Tab.Navigator
@@ -88,28 +95,28 @@ function BottomTabsRoot({ navigation }) {
       }}
     >
       <Tab.Screen
-        name="Piyasalar"
-        component={Piyasalar}
+        name="ScreenMarkets"
+        component={ScreenMarkets}
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Portfolio2"
-        component={Portfolio2}
+        name="ScreenPortfolio"
+        component={ScreenPortfolio}
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Charts"
-        component={Charts}
+        name="ScreenCharts"
+        component={ScreenCharts}
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="News2"
-        component={News2}
+        name="ScreenNews"
+        component={ScreenNews}
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="User3"
-        component={User3}
+        name="ScreenUser"
+        component={ScreenUser}
         options={{ headerShown: false }}
       />
     </Tab.Navigator>
@@ -141,68 +148,64 @@ const App = () => {
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="BottomTabsRoot" component={BottomTabsRoot} />
             <Stack.Screen
-              name="Al"
-              component={Al}
+              name="ScreenSplash"
+              component={ScreenSplash}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="User1"
-              component={User1}
+              name="ActiveUserButton"
+              component={ActiveUserButton}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="News"
-              component={News}
+              name="NormalNewsButton"
+              component={NormalNewsButton}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="News1"
-              component={News1}
+              name="ActiveNewsButton"
+              component={ActiveNewsButton}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Chart"
-              component={Chart}
+              name="NormalChartButton"
+              component={NormalChartButton}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Chart1"
-              component={Chart1}
+              name="ActiveChartButton"
+              component={ActiveChartButton}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Portfolio"
-              component={Portfolio}
+              name="ActivePortfolioButton"
+              component={ActivePortfolioButton}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Market"
-              component={Market}
+              name="ActiveMarketButton"
+              component={ActiveMarketButton}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="User2"
-              component={User2}
+              name="NormalUserButton"
+              component={NormalUserButton}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Portfolio1"
-              component={Portfolio1}
+              name="NormalPortfolioButton"
+              component={NormalPortfolioButton}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Market1"
-              component={Market1}
+              name="NormalMarketButton"
+              component={NormalMarketButton}
               options={{ headerShown: false }}
             />
-            <Stack.Screen
-              name="ListItem"
-              component={ListItem}
-              options={{ headerShown: false }}
-            />
+            
           </Stack.Navigator>
         ) : (
-          <Al />
+          <ScreenSplash />
         )}
       </NavigationContainer>
     </>

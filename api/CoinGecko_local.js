@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-const fetchCoins = async () => {
+export const fetchCoins = async () => {
   try {
-    // Golang servisinize istek gönderin
-    const response = await axios.get('http://localhost:8080/coins');
+    const response = await axios.get('https://localhost:8080/coins');
     return response.data;
   } catch (error) {
-    console.error('API Error:', error);
-    return [];
+    console.error(error);
+
   }
 };
+
+

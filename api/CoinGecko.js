@@ -8,7 +8,7 @@ export const fetchCoins = async () => {
         order: 'market_cap_desc',
         per_page: 100,
         page: 1,
-        sparkline: false
+        sparkline: false  
       }
     });
     return response.data;
