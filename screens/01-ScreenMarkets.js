@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Image } from "expo-image";
-import { StyleSheet, Text, View, SectionList, Pressable } from "react-native";
+import { StyleSheet, Text, View, SectionList, Pressable , FlatList,  SafeAreaView} from "react-native";
 import { Padding, FontSize, Color, FontFamily } from "../GlobalStyles";
-import { SafeAreaView } from "react-native-safe-area-context";
+
+
+
+
 
 const ScreenMarkets = () => {
   const [listItemsSectionListData, setListItemsSectionListData] = useState([]);
