@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Padding, FontSize, Color, FontFamily, Border } from "../GlobalStyles";
 
 import { fetchCoins } from "../api/CoinGecko";
-//import { fetchCoins } from "../api/CoinGecko_local";
+
 
 const ScreenPortfolio = () => {
   const navigation = useNavigation();
@@ -20,7 +20,7 @@ const ScreenPortfolio = () => {
 
     getCoins();
 
-    //60sec refresh
+    //120sec refresh
     const interval = setInterval(() => {
       getCoins();
     }, 120000);
@@ -67,6 +67,7 @@ const ScreenPortfolio = () => {
           </View>
 
           <View style={styles.listItems}>
+
           <FlatList
           data={coins}
           renderItem={({item}) => (

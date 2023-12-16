@@ -1,15 +1,15 @@
-import React, { useState,useEffect } from "react";
+import * as React from "react";
+import { useState,useEffect } from "react";
 import { Image } from "expo-image";
 import { StyleSheet, Text, View, SectionList, Pressable , FlatList,  SafeAreaView} from "react-native";
 import { Padding, FontSize, Color, FontFamily } from "../GlobalStyles";
 
 
-
+import { fetchCoins } from "../api/CoinGecko";
 
 
 const ScreenMarkets = () => {
-  const [listItemsSectionListData, setListItemsSectionListData] = useState([]);
-
+ 
   const [coins, setCoins] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const ScreenMarkets = () => {
 
     getCoins();
 
-    //60sec refresh
+    //120sec refresh
     const interval = setInterval(() => {
       getCoins();
     }, 120000);
@@ -83,6 +83,7 @@ const ScreenMarkets = () => {
 
         
           <View style={styles.listItems}>
+
           <FlatList
           data={coins}
           renderItem={({item}) => (
