@@ -1,44 +1,26 @@
-import * as React from "react";
-import { useEffect, useState } from 'react';
-import { Image } from "expo-image";
-import { StyleSheet, Text, View, Pressable , FlatList,SectionList , SafeAreaView} from "react-native";
-import { useNavigation } from "@react-navigation/native";
+// Header.js
+import React from "react";
+import { View, Text, Image, FlatList, StyleSheet } from "react-native";
 import { Padding, FontSize, Color, FontFamily, Border } from "../GlobalStyles";
 
-import { fetchCoins } from "../api/CoinGecko";
-import Header from "../components/Header";
-import CoinList from "../components/CoinList";
-
-const ScreenPortfolio = () => {
-  const navigation = useNavigation();
-  const [coins, setCoins] = useState([]);
-
-  useEffect(() => {
-    const getCoins = async () => {
-      const data = await fetchCoins();
-      setCoins(data);
-    };
-
-    getCoins();
-
-    //120sec refresh
-    const interval = setInterval(() => {
-      getCoins();
-    }, 120000);
-
-
-    return () => clearInterval(interval);
-
-  }, []);
-
+const Header = () => {
   return (
-    <SafeAreaView style={[styles.portfolio, styles.frameFlexBox]}>
-      <Header />
-      <CoinList coins={coins} />
-
-
-      
-    </SafeAreaView>
+    <View>
+      {/* Header content */}
+      <Image
+        style={styles.groupIcon}
+        contentFit="cover"
+        source={require("../assets/group4.png")}
+      />
+      <Text style={[styles.portfolio1, styles.portfolio1FlexBox]}>
+        PORTFOLIO
+      </Text>
+      <Image
+        style={styles.iconSearch}
+        contentFit="cover"
+        source={require("../assets/-icon-search.png")}
+      />
+    </View>
   );
 };
 
@@ -256,4 +238,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ScreenPortfolio;
+export default Header;

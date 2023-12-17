@@ -1,46 +1,75 @@
-import * as React from "react";
-import { useEffect, useState } from 'react';
-import { Image } from "expo-image";
-import { StyleSheet, Text, View, Pressable , FlatList,SectionList , SafeAreaView} from "react-native";
-import { useNavigation } from "@react-navigation/native";
+// CoinList.js
+import React from "react";
+import { View, Text, Image, FlatList , StyleSheet } from "react-native";
 import { Padding, FontSize, Color, FontFamily, Border } from "../GlobalStyles";
 
-import { fetchCoins } from "../api/CoinGecko";
-import Header from "../components/Header";
-import CoinList from "../components/CoinList";
-
-const ScreenPortfolio = () => {
-  const navigation = useNavigation();
-  const [coins, setCoins] = useState([]);
-
-  useEffect(() => {
-    const getCoins = async () => {
-      const data = await fetchCoins();
-      setCoins(data);
-    };
-
-    getCoins();
-
-    //120sec refresh
-    const interval = setInterval(() => {
-      getCoins();
-    }, 120000);
-
-
-    return () => clearInterval(interval);
-
-  }, []);
-
+const CoinList = ({ coins }) => {
   return (
-    <SafeAreaView style={[styles.portfolio, styles.frameFlexBox]}>
-      <Header />
-      <CoinList coins={coins} />
+    <View style={[styles.frame, styles.frameSpaceBlock]}>
+    <View style={styles.list}>
+      <View style={[styles.colNames, styles.listFlexBox]}>
+        <View style={styles.numberParent}>
+          <Text style={styles.coinTypo}>NUMBER</Text>
+          <Text style={[styles.coin, styles.coinTypo]}>COIN</Text>
+        </View>
+        <Text style={styles.coinTypo}>PRICE</Text>
+        <View style={styles.hParent}>
+          <Text style={styles.coinTypo}>24H</Text>
+          <Text style={[styles.marketcap, styles.coinTypo]}>MARKETCAP</Text>
+        </View>
+      </View>
+
+      <View style={styles.listItems}>
+
+      <FlatList
+      data={coins}
+      renderItem={({item}) => (
+        <View style={styles.listItem}>
+          <View style={[styles.listItem1, styles.listFlexBox]}>
+            <View style={styles.numberParent}>
+              <Text style={[styles.number1, styles.number1Typo]}>{item.market_cap_rank}</Text>
+              <View style={[styles.symbolframe, styles.portfolio1FlexBox]}>
+                <Image
+                  style={styles.cryptologoIcon}
+                  contentFit="cover"
+                  source={{ uri: item.image }}
+                />
+                <Text style={styles.cryptosymbol}> {item.name}</Text>
+              </View>
+            </View>
+            <Text style={styles.number1Typo}>${item.current_price}</Text>
+            <View style={styles.hParent}>
+              <View style={styles.pricechangeframe}>
+                <Image
+                  style={styles.arrowIcon}
+                  contentFit="cover"
+                  source={require("../assets/arrow.png")}
+                />
+                <Text style={[styles.cryptochange, styles.marketcap1Typo]}>
+                {item.price_change_percentage_24h.toFixed(2)}%
+                </Text>
+              </View>
+              <Text style={[styles.marketcap1, styles.marketcap1Typo]}>
+                ${item.market_cap}
+              </Text>
+            </View>
+          </View>
+          <View style={[styles.listItemChild, styles.tabbarBorder]} />
+        </View>
+      )}
+      keyExtractor={(item) => item.id}
+      />
+      </View>
 
 
       
-    </SafeAreaView>
+    </View>
+  </View>
   );
 };
+
+
+
 
 const styles = StyleSheet.create({
   frameFlexBox: {
@@ -255,5 +284,4 @@ const styles = StyleSheet.create({
     backgroundColor: Color.colorGray,
   },
 });
-
-export default ScreenPortfolio;
+export default CoinList;
