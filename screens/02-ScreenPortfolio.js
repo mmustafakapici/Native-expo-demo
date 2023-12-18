@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Pressable , FlatList,SectionList , SafeAreaView
 import { useNavigation } from "@react-navigation/native";
 import { Padding, FontSize, Color, FontFamily, Border } from "../GlobalStyles";
 
-import { fetchCoins } from "../api/CoinGecko";
+import { fetchCoins } from "../api/CoinGecko_api";
 import Header from "../components/Header";
 import CoinList from "../components/CoinList";
 

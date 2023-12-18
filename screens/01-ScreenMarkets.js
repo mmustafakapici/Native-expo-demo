@@ -22,10 +22,10 @@ const ScreenMarkets = () => {
 
     getCoins();
 
-    //120sec refresh
+    //5sec refresh
     const interval = setInterval(() => {
       getCoins();
-    }, 120000);
+    }, 5000);
 
 
     return () => clearInterval(interval);
