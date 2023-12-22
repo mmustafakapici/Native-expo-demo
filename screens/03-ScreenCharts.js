@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Image } from "expo-image";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable, SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Padding, FontSize, FontFamily, Color } from "../GlobalStyles";
 
@@ -8,7 +8,7 @@ const ScreenCharts = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.charts}>
+    <SafeAreaView style={styles.charts}>
       <View style={[styles.headerTopBar, styles.tabbarFlexBox]}>
         <Image
           style={styles.groupIcon}
@@ -24,7 +24,7 @@ const ScreenCharts = () => {
       </View>
       <View style={[styles.chartsChild, styles.tabbarSpaceBlock]} />
      
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -1,17 +1,22 @@
 import * as React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Image } from "expo-image";
-import { StyleSheet, Text, View, SectionList, Pressable , FlatList,  SafeAreaView} from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SectionList,
+  Pressable,
+  FlatList,
+  SafeAreaView,
+} from "react-native";
 import { Padding, FontSize, Color, FontFamily, Border } from "../GlobalStyles";
 
 import { fetchCoins } from "../api/CoinGecko_api";
 import Header from "../components/Header";
 import CoinList from "../components/CoinList";
 
-
-
 const ScreenMarkets = () => {
- 
   const [coins, setCoins] = useState([]);
 
   useEffect(() => {
@@ -27,24 +32,25 @@ const ScreenMarkets = () => {
       getCoins();
     }, 5000);
 
-
     return () => clearInterval(interval);
-
   }, []);
-
-
-
 
   return (
     <SafeAreaView style={[styles.portfolio]}>
       <View style={[styles.headerTopBar, styles.tabbarFlexBox]}>
-
-      <Header />
+        <Image
+          style={styles.groupIcon}
+          contentFit="cover"
+          source={require("../assets/group4.png")}
+        />
+        <Text style={styles.portfolio1}>MARKETS</Text>
+        <Image
+          style={styles.iconSearch}
+          contentFit="cover"
+          source={require("../assets/-icon-search.png")}
+        />
       </View>
       <CoinList coins={coins} />
-
-
-      
     </SafeAreaView>
   );
 };
