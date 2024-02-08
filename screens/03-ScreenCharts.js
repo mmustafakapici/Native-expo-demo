@@ -4,6 +4,9 @@ import { StyleSheet, Text, View, Pressable, SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Padding, FontSize, FontFamily, Color } from "../GlobalStyles";
 
+import  CryptoChart  from "../components/CryptoChart";
+
+
 const ScreenCharts = () => {
   const navigation = useNavigation();
 
@@ -22,6 +25,11 @@ const ScreenCharts = () => {
           source={require("../assets/-icon-search.png")}
         />
       </View>
+      <ScrollView style={styles.container}>
+      <Text style={styles.heading}>Kripto Para Fiyatları</Text>
+      <CryptoChart />
+    </ScrollView>
+
       <View style={[styles.chartsChild, styles.tabbarSpaceBlock]} />
      
     </SafeAreaView>
