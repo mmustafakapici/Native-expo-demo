@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Dimensions, ActivityIndicator, StyleSheet ,ScrollView } from 'react-native';
+import { View, Text, Dimensions, ActivityIndicator, StyleSheet ,ScrollView  } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { LineChart } from 'react-native-chart-kit';
 import axios from 'axios';
+import { Padding, FontSize, FontFamily, Color } from "../GlobalStyles";
+
 
 const CryptoChart = () => {
   const [selectedCrypto, setSelectedCrypto] = useState('');
@@ -72,6 +74,7 @@ const CryptoChart = () => {
             yAxisLabel="$"
             chartConfig={styles.chartConfig}
             bezier
+            
             style={styles.chart}
           />
         </View>
@@ -83,16 +86,22 @@ const CryptoChart = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 8,
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    
+
   },
   picker: {
     height: 50,
     width: '100%',   
-    marginBottom: 20,
+    marginBottom: 10,
+    
   },
   chart: {
     marginVertical: 8,
     borderRadius: 16,
+    paddingTop:80,
   },
   chartConfig: {
     backgroundColor: '#e26a00',
@@ -106,7 +115,7 @@ const styles = StyleSheet.create({
     },
     propsForDots: {
       r: '6',
-      strokeWidth: '2',
+      strokeWidth: '5',
       stroke: '#ffa726',
     },
   },

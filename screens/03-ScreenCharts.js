@@ -25,15 +25,17 @@ const ScreenCharts = () => {
         />
       </View>
 
-      <ScrollView style={styles.scrollViewStyle}>
+      <View style={styles.scrollViewStyle}>
         {/* Adım 2: CryptoChart bileşenini ekran layout'una ekleyin */}
-      <CryptoChart />
-      </ScrollView>
+      <CryptoChart  />
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+
+  
   tabbarFlexBox: {
     paddingHorizontal: Padding.p_xl,
     justifyContent: "space-between",
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
   scrollViewStyle: {
     flex: 1,
     width: '100%',
-
+    
   },
   charts: {
     flex: 1,
