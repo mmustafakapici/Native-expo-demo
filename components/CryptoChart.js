@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Dimensions, ActivityIndicator } from 'react-native';
+import { View, Text, Dimensions, ActivityIndicator, StyleSheet ,ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { LineChart } from 'react-native-chart-kit';
 import axios from 'axios';
@@ -19,7 +19,6 @@ const CryptoChart = () => {
   const fetchTickers = async () => {
     try {
       const response = await axios.get(tickers_url);
-      // Dönen JSON dizisini doğrudan kullanıyoruz, her bir elemanı { label: ticker, value: ticker } şeklinde dönüştürüyoruz
       const options = response.data.map(ticker => ({ label: ticker, value: ticker }));
       setCryptoOptions(options);
     } catch (error) {
@@ -39,8 +38,7 @@ const CryptoChart = () => {
     try {
       const response = await axios.get(url);
       const prices = response.data.Close.map(entry => entry[1]);
-      const labels = response.data.Close.map(entry => entry[0].substring(5, 10).replace('-', '/')); // "YYYY-MM-DD" formatından "MM/DD" formatına
-
+      const labels = response.data.Close.map(entry => entry[0].substring(5, 10).replace('-', '/'));
       setPriceData({
         labels,
         datasets: [{ data: prices }]
@@ -53,54 +51,65 @@ const CryptoChart = () => {
   };
 
   return (
-    <View>
-      {cryptoOptions.length > 0 ? (
-        <Picker
-          selectedValue={selectedCrypto}
-          onValueChange={(itemValue) => setSelectedCrypto(itemValue)}
-          style={{ height: 50, width: 150 }}>
-          <Picker.Item label="Select a Crypto" value="" />
-          {cryptoOptions.map(option => (
-            <Picker.Item key={option.value} label={option.label} value={option.value} />
-          ))}
-        </Picker>
-      ) : (
-        <ActivityIndicator size="large" />
-      )}
-
+    <View style={styles.container}>
+      <Picker
+        selectedValue={selectedCrypto}
+        onValueChange={(itemValue) => setSelectedCrypto(itemValue)}
+        style={styles.picker}>
+        <Picker.Item label="Select a Crypto" value="" />
+        {cryptoOptions.map(option => (
+          <Picker.Item key={option.value} label={option.label} value={option.value} />
+        ))}
+      </Picker>
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : selectedCrypto && priceData.datasets[0].data.length > 0 ? (
-        <LineChart
-          data={priceData}
-          width={Dimensions.get('window').width - 16}
-          height={220}
-          yAxisLabel="$"
-          chartConfig={{
-            backgroundColor: '#e26a00',
-            backgroundGradientFrom: '#fb8c00',
-            backgroundGradientTo: '#ffa726',
-            decimalPlaces: 2,
-            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-            labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-            style: {
-              borderRadius: 16
-            },
-            propsForDots: {
-              r: '6',
-              strokeWidth: '2',
-              stroke: '#ffa726'
-            }
-          }}
-          bezier
-          style={{
-            marginVertical: 8,
-            borderRadius: 16
-          }}
-        />
+        <View>
+          <LineChart
+            data={priceData}
+            width={Dimensions.get('window').width - 30}
+            height={Dimensions.get('window').height - 400} // Yüksekliği ayarladım
+            yAxisLabel="$"
+            chartConfig={styles.chartConfig}
+            bezier
+            style={styles.chart}
+          />
+        </View>
       ) : null}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 8,
+  },
+  picker: {
+    height: 50,
+    width: '100%',   
+    marginBottom: 20,
+  },
+  chart: {
+    marginVertical: 8,
+    borderRadius: 16,
+  },
+  chartConfig: {
+    backgroundColor: '#e26a00',
+    backgroundGradientFrom: '#fb8c00',
+    backgroundGradientTo: '#ffa726',
+    decimalPlaces: 2,
+    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    style: {
+      borderRadius: 16,
+    },
+    propsForDots: {
+      r: '6',
+      strokeWidth: '2',
+      stroke: '#ffa726',
+    },
+  },
+});
 
 export default CryptoChart;

@@ -1,11 +1,10 @@
 import * as React from "react";
 import { Image } from "expo-image";
-import { StyleSheet, Text, View, Pressable, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, Pressable, SafeAreaView  , ScrollView} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Padding, FontSize, FontFamily, Color } from "../GlobalStyles";
 
-import  CryptoChart  from "../components/CryptoChart";
-
+import CryptoChart from "../components/CryptoChart";
 
 const ScreenCharts = () => {
   const navigation = useNavigation();
@@ -25,13 +24,11 @@ const ScreenCharts = () => {
           source={require("../assets/-icon-search.png")}
         />
       </View>
-      <ScrollView style={styles.container}>
-      <Text style={styles.heading}>Kripto Para Fiyatları</Text>
-      <CryptoChart />
-    </ScrollView>
 
-      <View style={[styles.chartsChild, styles.tabbarSpaceBlock]} />
-     
+      <ScrollView style={styles.scrollViewStyle}>
+        {/* Adım 2: CryptoChart bileşenini ekran layout'una ekleyin */}
+      <CryptoChart />
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -126,6 +123,22 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     backgroundColor: Color.colorGray,
   },
+
+  scrollViewStyle: {
+    flex: 1,
+    width: '100%',
+
+  },
+  charts: {
+    flex: 1,
+    width: "100%",
+    paddingBottom: 0,
+    alignItems: "center",
+    overflow: "hidden",
+    backgroundColor: Color.colorGray,
+    fontFamily: FontFamily.exo2Medium,
+    color: Color.colorWhitesmoke,
+  }
 });
 
 export default ScreenCharts;
